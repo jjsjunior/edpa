@@ -1,0 +1,29 @@
+/*
+ * skewheap.h
+ *
+ *  Created on: 3 de dez de 2018
+ *      Author: jones
+ */
+
+#ifndef SKEWHEAP_H_
+#define SKEWHEAP_H_
+
+
+struct skew_heap_node_struct {
+	long s;
+	void* data;
+	struct skew_heap_node_struct* left_branch,*right_branch;
+};
+
+typedef struct skew_heap_node_struct SkewNode;
+
+struct skew_heap_struct {
+	SkewNode* first_node;
+};
+
+typedef struct skew_heap_struct SkewHeap;
+
+SkewNode* create_SkewNode(long s,void* data);
+
+
+#endif /* SKEWHEAP_H_ */

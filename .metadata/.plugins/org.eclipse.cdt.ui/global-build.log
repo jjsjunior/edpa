@@ -1,0 +1,270 @@
+11:20:14 **** Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+11:20:21 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+make: Nothing to be done for 'all'.
+11:30:05 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c:16:11: error: conflicting types for ‘criarNovoNo’
+ SkewNode* criarNovoNo(int chave) {
+           ^
+src/subdir.mk:18: recipe for target 'src/skewheap.o' failed
+In file included from ../src/skewheap.c:13:0:
+../src/skewheap.h:25:11: note: previous declaration of ‘criarNovoNo’ was here
+ SkewNode* criarNovoNo(long s,void* data);
+           ^
+make: *** [src/skewheap.o] Error 1
+11:30:26 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+12:40:34 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+12:46:48 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+12:55:13 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘adicionarNo’:
+../src/skewheap.c:36:2: warning: implicit declaration of function ‘mesclarNovoNo’ [-Wimplicit-function-declaration]
+  mesclarNovoNo(noRaiz, novoNo)
+  ^
+../src/skewheap.c:37:1: error: expected ‘;’ before ‘}’ token
+ }
+ ^
+src/subdir.mk:18: recipe for target 'src/skewheap.o' failed
+make: *** [src/skewheap.o] Error 1
+12:55:27 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘adicionarNo’:
+../src/skewheap.c:36:2: warning: implicit declaration of function ‘mesclarNovoNo’ [-Wimplicit-function-declaration]
+  mesclarNovoNo(noRaiz, novoNo);
+  ^
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+./src/skewheap.o: In function `adicionarNo':
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:36: undefined reference to `mesclarNovoNo'
+makefile:30: recipe for target 'skewheap' failed
+collect2: error: ld returned 1 exit status
+make: *** [skewheap] Error 1
+12:55:58 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘adicionarNo’:
+../src/skewheap.c:44:2: warning: implicit declaration of function ‘mesclarNovoNo’ [-Wimplicit-function-declaration]
+  mesclarNovoNo(noRaiz, novoNo);
+  ^
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+./src/skewheap.o: In function `adicionarNo':
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:44: undefined reference to `mesclarNovoNo'
+collect2: error: ld returned 1 exit status
+makefile:30: recipe for target 'skewheap' failed
+make: *** [skewheap] Error 1
+12:56:27 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+13:07:45 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘adicionarNoDireita’:
+../src/skewheap.c:35:2: warning: implicit declaration of function ‘alternarFilhos’ [-Wimplicit-function-declaration]
+  alternarFilhos(noHeap);
+  ^
+../src/skewheap.c: At top level:
+../src/skewheap.c:38:6: warning: conflicting types for ‘alternarFilhos’
+ void alternarFilhos(SkewNode* no){
+      ^
+../src/skewheap.c:35:2: note: previous implicit declaration of ‘alternarFilhos’ was here
+  alternarFilhos(noHeap);
+  ^
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+13:08:06 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+13:35:45 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘printProfundidade’:
+../src/skewheap.c:31:9: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 2 has type ‘int’ [-Wformat=]
+  printf(" :%ld , ",no->chave);
+         ^
+../src/skewheap.c:33:10: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 2 has type ‘int’ [-Wformat=]
+   printf(" :%ld , ",no->subArvoreEsquerda->chave);
+          ^
+../src/skewheap.c:36:10: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 2 has type ‘int’ [-Wformat=]
+   printf(" :%ld , ",no->subArvoreDireita->chave);
+          ^
+../src/skewheap.c:38:2: warning: implicit declaration of function ‘print_profundidade’ [-Wimplicit-function-declaration]
+  print_profundidade(no->subArvoreEsquerda);
+  ^
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+./src/skewheap.o: In function `printProfundidade':
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:38: undefined reference to `print_profundidade'
+makefile:30: recipe for target 'skewheap' failed
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:39: undefined reference to `print_profundidade'
+collect2: error: ld returned 1 exit status
+make: *** [skewheap] Error 1
+13:37:01 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+13:37:09 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+make: Nothing to be done for 'all'.
+14:00:46 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+14:03:00 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+make: Nothing to be done for 'all'.
+14:05:36 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+14:22:00 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+../src/skewheap.c: In function ‘calcularAltura’:
+../src/skewheap.c:29:24: warning: implicit declaration of function ‘height’ [-Wimplicit-function-declaration]
+   int alturaEsquerda = height(no->subArvoreEsquerda);
+                        ^
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+./src/skewheap.o: In function `calcularAltura':
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:29: undefined reference to `height'
+makefile:30: recipe for target 'skewheap' failed
+/home/jones/eclipse-workspace-cpp/skewheap/Debug/../src/skewheap.c:30: undefined reference to `height'
+collect2: error: ld returned 1 exit status
+make: *** [skewheap] Error 1
+14:22:41 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+Building file: ../src/skewheap.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/skewheap.d" -MT"src/skewheap.o" -o "src/skewheap.o" "../src/skewheap.c"
+Finished building: ../src/skewheap.c
+ 
+Building target: skewheap
+Invoking: GCC C Linker
+gcc  -o "skewheap"  ./src/skewheap.o   
+Finished building target: skewheap
+ 
+14:22:59 **** Incremental Build of configuration Debug for project skewheap ****
+make all 
+make: Nothing to be done for 'all'.

@@ -1,0 +1,58 @@
+/*
+ ============================================================================
+ Name        : skewheap.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "skewheap.h"
+
+
+SkewNode* noRaiz;
+
+
+SkewNode* criarNovoNo(int chave) {
+	SkewNode* new_skew_node = (SkewNode*) malloc(sizeof(SkewNode));
+	new_skew_node->chave = chave;
+	new_skew_node->subArvoreEsquerda = NULL;
+	new_skew_node->subArvoreDireita = NULL;
+	return new_skew_node;
+}
+
+SkewHeap* criarSkewHeap() {
+	SkewHeap* new_skew_heap = (SkewHeap*) malloc(sizeof(SkewHeap));
+	new_skew_heap->noRaiz = NULL;
+	return new_skew_heap;
+}
+
+void mesclarNo(SkewNode* noEsquerda, SkewNode* noDireita){
+	if(noEsquerda->chave<=noDireita->chave){
+		if(noEsquerda->subArvoreDireita == NULL){
+
+		}
+	}
+}
+
+
+void adicionarNo(int chave){
+	SkewNode* novoNo = criarNovoNo(chave);
+	mesclarNovoNo(noRaiz, novoNo);
+}
+
+
+void adicionarNoDireita(SkewNode* noHeap, SkewNode* noTransferencia){
+	noHeap->subArvoreDireita = noTransferencia;
+}
+
+
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	noRaiz = criarNovoNo(40);
+	return EXIT_SUCCESS;
+}

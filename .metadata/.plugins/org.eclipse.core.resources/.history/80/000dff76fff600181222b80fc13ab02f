@@ -1,0 +1,29 @@
+/*
+ ============================================================================
+ Name        : skewheap.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "skewheap.h"
+
+
+SkewNode* criarNovoNo(long s,void* data) {
+	SkewNode* new_skew_node = (SkewNode*) malloc(sizeof(SkewNode));
+	new_skew_node->s = s;
+	new_skew_node->data = data;
+	new_skew_node->left_branch = NULL;
+	new_skew_node->right_branch = NULL;
+	return new_skew_node;
+}
+
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}

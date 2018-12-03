@@ -1,0 +1,83 @@
+/*
+ ============================================================================
+ Name        : skewheap.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "skewheap.h"
+
+
+SkewNode* noRaiz;
+
+
+SkewNode* criarNovoNo(int chave) {
+	SkewNode* new_skew_node = (SkewNode*) malloc(sizeof(SkewNode));
+	new_skew_node->chave = chave;
+	new_skew_node->subArvoreEsquerda = NULL;
+	new_skew_node->subArvoreDireita = NULL;
+	return new_skew_node;
+}
+
+void printProfundidade(SkewNode* no) {
+	if(no == NULL) {
+		return;
+	}
+	printf("%i , ",no->chave);
+	if(no->subArvoreEsquerda!=NULL){
+		printf(" :%i , ",no->subArvoreEsquerda->chave);
+	}
+	if(no->subArvoreDireita!=NULL){
+		printf(" :%i , ",no->subArvoreDireita->chave);
+	}
+	printProfundidade(no->subArvoreEsquerda);
+	printProfundidade(no->subArvoreDireita);
+}
+
+SkewHeap* criarSkewHeap() {
+	SkewHeap* new_skew_heap = (SkewHeap*) malloc(sizeof(SkewHeap));
+	new_skew_heap->noRaiz = NULL;
+	return new_skew_heap;
+}
+
+void alternarFilhos(SkewNode* no){
+	SkewNode* noEmTroca = no->subArvoreDireita;
+	no->subArvoreDireita = no->subArvoreEsquerda;
+	no->subArvoreEsquerda = noEmTroca;
+}
+
+
+void adicionarNoDireita(SkewNode* noHeap, SkewNode* noTransferencia){
+	noHeap->subArvoreDireita = noTransferencia;
+	alternarFilhos(noHeap);
+}
+
+
+void mesclarNo(SkewNode* noEsquerda, SkewNode* noDireita){
+	if(noEsquerda->chave<=noDireita->chave){
+		if(noEsquerda->subArvoreDireita == NULL){
+			adicionarNoDireita(noEsquerda, noDireita);
+		}
+	}
+}
+
+
+void adicionarNo(int chave){
+	SkewNode* novoNo = criarNovoNo(chave);
+	mesclarNo(noRaiz, novoNo);
+}
+
+
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	noRaiz = criarNovoNo(40);
+	adicionarNo(80);
+	printProfundidade(noRaiz);
+	return EXIT_SUCCESS;
+}
