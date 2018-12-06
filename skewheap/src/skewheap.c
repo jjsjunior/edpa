@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "skewheap.h"
+#include <string.h>
 
 SkewNode* noRaiz;
 
