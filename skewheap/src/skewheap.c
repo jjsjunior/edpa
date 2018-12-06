@@ -53,6 +53,7 @@ void imprimirProfundidade(SkewNode* no) {
 	for (i = 1; i <= h; i++) {
 		imprimirNivel(no, i);
 	}
+	printf("\n ");
 }
 
 SkewHeap* criarSkewHeap() {
@@ -114,27 +115,37 @@ void imprimirEntrada(int argc, char* argv[]) {
 
 void transformarChavesEntrada(char* argv[], int argc, int sequenciaNos[]) {
 	int i;
-	for (i = 1; i < argc; i++) {
+	for (i = 2; i < argc; i++) {
 		char *teste = argv[i];
 		int w;
 		sscanf(teste, "%d", &w);
-		sequenciaNos[i-1] = w;
+		printf("%i\n", w);
+		sequenciaNos[i-2] = w;
 	}
 }
 
-int main(int argc, char* argv[]) {
-	printf("%i\n", argc);
-	int sequenciaNos[argc-1];
+void executarAmbienteDesenvolvimento(int argc, char* argv[]){
+	int sequenciaNos[argc-2];
 	transformarChavesEntrada(argv, argc, sequenciaNos);
 	int chaveNoRaiz = sequenciaNos[0];
 	noRaiz = criarNovoNo(chaveNoRaiz, NULL);
 	int j;
-	for (j = 1; j < argc-1; j++) {
+	for (j = 1; j < argc-2; j++) {
 		int chave = sequenciaNos[j];
-		printf("%i \n", chave);
+//		printf("%i \n", chave);
 		adicionarNo(chave);
 	}
+	printf("%s\n", "imprimir arvore");
 	imprimirProfundidade(noRaiz);
+}
+
+int main(int argc, char* argv[]) {
+//	printf("%i\n", argc);
+	char *ambiente = argv[1];
+	printf("%s\n", ambiente);
+	if(strcmp ("d", ambiente) == 0) {
+		executarAmbienteDesenvolvimento(argc, argv);
+	}
 
 
 	return EXIT_SUCCESS;
