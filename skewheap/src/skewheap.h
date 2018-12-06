@@ -11,7 +11,7 @@
 
 struct skew_heap_node_struct {
 	int  chave;
-	struct skew_heap_node_struct* subArvoreEsquerda,*subArvoreDireita;
+	struct skew_heap_node_struct* subArvoreEsquerda,*subArvoreDireita, *pai;
 };
 
 typedef struct skew_heap_node_struct SkewNode;
@@ -22,7 +22,7 @@ struct skew_heap_struct {
 
 typedef struct skew_heap_struct SkewHeap;
 
-SkewNode* criarNovoNo(int s);
+SkewNode* criarNovoNo(int s, SkewNode* pai);
 
 
 #endif /* SKEWHEAP_H_ */
