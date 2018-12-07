@@ -75,10 +75,16 @@ void adicionarNoDireita(SkewNode* noHeap, SkewNode* noTransferencia) {
 	swapFilhos(noHeap);
 }
 
-void swapSubArvores(SkewNode* subArvoreDireita,SkewNode* noHeapTransferencia){
-	noHeapTransferencia->pai = subArvoreDireita->pai;
-	subArvoreDireita->pai = NULL;
-	noHeapTransferencia->pai->subArvoreDireita = noHeapTransferencia;
+void swapSubArvores(SkewNode* subArvoreDireita, SkewNode* noHeapTransferencia) {
+	if (subArvoreDireita->pai == NULL && noHeapTransferencia->pai == NULL) { //caso nenhuma das 2 subarvores tenha pai se trata de um swap dos dois heaps
+		noRaiz = noHeapTransferencia;
+	} else {
+		noHeapTransferencia->pai = subArvoreDireita->pai;
+		subArvoreDireita->pai = NULL;
+		if (noHeapTransferencia->pai != NULL) {
+			noHeapTransferencia->pai->subArvoreDireita = noHeapTransferencia;
+		}
+	}
 }
 
 void mesclarNo(SkewNode* noEsquerda, SkewNode* noDireita) {
@@ -93,6 +99,15 @@ void mesclarNo(SkewNode* noEsquerda, SkewNode* noDireita) {
 		swapSubArvores(noEsquerda, noDireita);
 		swapFilhos(noDireita);
 		mesclarNo(noDireita, noEsquerda);
+	}
+}
+
+void gerarChaves(int int_min, int int_max, int quantidadeNos, int arrayChaves[]) {
+	int i;
+	for (i = 0; i < quantidadeNos; i++) {
+		int num = (rand() % (int_max - int_min + 1)) + int_min;
+		arrayChaves[i] = num;
+//		printf("%d ", num);
 	}
 }
 
@@ -113,7 +128,6 @@ void imprimirEntrada(int argc, char* argv[]) {
 	}
 }
 
-
 void transformarChavesEntrada(char* argv[], int argc, int sequenciaNos[]) {
 	int i;
 	for (i = 2; i < argc; i++) {
@@ -121,33 +135,77 @@ void transformarChavesEntrada(char* argv[], int argc, int sequenciaNos[]) {
 		int w;
 		sscanf(teste, "%d", &w);
 		printf("%i\n", w);
-		sequenciaNos[i-2] = w;
+		sequenciaNos[i - 2] = w;
 	}
 }
 
-void executarAmbienteDesenvolvimento(int argc, char* argv[]){
-	int sequenciaNos[argc-2];
+void executarAmbienteDesenvolvimento(int argc, char* argv[]) {
+	int sequenciaNos[argc - 2];
 	transformarChavesEntrada(argv, argc, sequenciaNos);
 	int chaveNoRaiz = sequenciaNos[0];
 	noRaiz = criarNovoNo(chaveNoRaiz, NULL);
 	int j;
-	for (j = 1; j < argc-2; j++) {
+	for (j = 1; j < argc - 2; j++) {
 		int chave = sequenciaNos[j];
+//		printf("%i \n", chave);
+		adicionarNo(chave);
+	}
+	printf("\n %s \n", "imprimir arvore");
+	imprimirProfundidade(noRaiz);
+}
+
+void imprimirArray(int qtdItems, int array[]) {
+	int j;
+	for (j = 0; j < qtdItems; j++) {
+		printf("%d ", array[j]);
+	}
+}
+
+void executarAmbienteProducao(int argc, char* argv[]) {
+	char *n = argv[2];
+	int quantidadeNos;
+	sscanf(n, "%d", &quantidadeNos);
+	printf("%s\n", "qtde de nos: ");
+	printf("%i\n", quantidadeNos);
+
+	char *minimo = argv[3];
+	int intMin;
+	sscanf(minimo, "%d", &intMin);
+	printf("%s\n", "INT_MIN: ");
+	printf("%i\n", intMin);
+
+	char *maximo = argv[4];
+	int intMax;
+	sscanf(maximo, "%d", &intMax);
+	printf("%s\n", "INT_MAX: ");
+	printf("%i\n", intMax);
+	int arrayChaves[quantidadeNos];
+	gerarChaves(intMin, intMax, quantidadeNos, arrayChaves);
+	imprimirArray(quantidadeNos, arrayChaves);
+
+	int chaveNoRaiz = arrayChaves[0];
+	noRaiz = criarNovoNo(chaveNoRaiz, NULL);
+	int chaveAtual;
+	for (chaveAtual = 1; chaveAtual < quantidadeNos; chaveAtual++) {
+		int chave = arrayChaves[chaveAtual];
 //		printf("%i \n", chave);
 		adicionarNo(chave);
 	}
 	printf("%s\n", "imprimir arvore");
 	imprimirProfundidade(noRaiz);
+
 }
 
 int main(int argc, char* argv[]) {
 //	printf("%i\n", argc);
 	char *ambiente = argv[1];
 	printf("%s\n", ambiente);
-	if(strcmp ("d", ambiente) == 0) {
+	if (strcmp("d", ambiente) == 0) {
 		executarAmbienteDesenvolvimento(argc, argv);
-	}
+	} else {
+		executarAmbienteProducao(argc, argv);
 
+	}
 
 	return EXIT_SUCCESS;
 }
