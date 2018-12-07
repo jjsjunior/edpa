@@ -14,6 +14,7 @@
 #include <time.h>
 
 SkewNode* noRaiz;
+int qtdComparacoes = 0;
 
 SkewNode* criarNovoNo(int chave, SkewNode* pai) {
 	SkewNode* new_skew_node = (SkewNode*) malloc(sizeof(SkewNode));
@@ -88,12 +89,17 @@ void swapSubArvores(SkewNode* subArvoreDireita, SkewNode* noHeapTransferencia) {
 }
 
 void mesclarNo(SkewNode* noEsquerda, SkewNode* noDireita) {
+	qtdComparacoes++;
 	if (noEsquerda->chave <= noDireita->chave) {
 		if (noEsquerda->subArvoreDireita == NULL) {
 			adicionarNoDireita(noEsquerda, noDireita);
 		} else {
 			swapFilhos(noEsquerda);
-			mesclarNo(noEsquerda->subArvoreDireita, noDireita);
+			if (noEsquerda->subArvoreDireita == NULL) {
+						adicionarNoDireita(noEsquerda, noDireita);
+			} else{
+				mesclarNo(noEsquerda->subArvoreDireita, noDireita);
+			}
 		}
 	} else {
 		swapSubArvores(noEsquerda, noDireita);
@@ -139,6 +145,34 @@ void transformarChavesEntrada(char* argv[], int argc, int sequenciaNos[]) {
 	}
 }
 
+void removerNoMinimo(SkewNode* node){
+	if(node->subArvoreDireita!=NULL){
+		node->subArvoreDireita->pai = NULL;
+	}
+	if(node->subArvoreEsquerda != NULL){
+		node->subArvoreEsquerda->pai = NULL;
+	}
+	if(node->subArvoreEsquerda!=NULL){
+		noRaiz = node->subArvoreEsquerda;
+	} else if (node->subArvoreDireita!=NULL){
+		noRaiz = node->subArvoreEsquerda;
+	} else {
+		noRaiz = NULL;
+	}
+	if(noRaiz!=NULL && node->subArvoreEsquerda!=NULL && node->subArvoreDireita!=NULL){
+		mesclarNo(node->subArvoreEsquerda, node->subArvoreDireita);
+	}
+	free(node);
+}
+
+
+void desconstruirHeap(){
+	removerNoMinimo(noRaiz);
+	if(noRaiz!=NULL){
+		desconstruirHeap();
+	}
+}
+
 void executarAmbienteDesenvolvimento(int argc, char* argv[]) {
 	int sequenciaNos[argc - 2];
 	transformarChavesEntrada(argv, argc, sequenciaNos);
@@ -152,6 +186,18 @@ void executarAmbienteDesenvolvimento(int argc, char* argv[]) {
 	}
 	printf("\n %s \n", "imprimir arvore");
 	imprimirProfundidade(noRaiz);
+
+	qtdComparacoes = 0;
+	printf("%s\n", "iniciando remocoes");
+	clock_t t;
+	t = clock();
+	desconstruirHeap();
+	t = clock() - t;
+	double time_taken = ((double) t) / CLOCKS_PER_SEC; // in seconds
+	printf("foram gastos %f segundos para descontruir arvore \n", time_taken);
+	printf("\n foram realizadas %d comparações para desconstruir a arvore \n", qtdComparacoes);
+
+
 }
 
 void imprimirArray(int qtdItems, int array[]) {
@@ -160,6 +206,8 @@ void imprimirArray(int qtdItems, int array[]) {
 		printf("%d ", array[j]);
 	}
 }
+
+
 
 void executarAmbienteProducao(int argc, char* argv[]) {
 	char *n = argv[2];
@@ -194,10 +242,19 @@ void executarAmbienteProducao(int argc, char* argv[]) {
 	}
 	t = clock() - t;
 	double time_taken = ((double) t) / CLOCKS_PER_SEC; // in seconds
-	printf("foram gastos %f segundos para executar \n", time_taken);
+	printf("foram gastos %f segundos para construir arvore \n", time_taken);
 	printf("%s\n", "imprimir arvore");
 	int altura = calcularAltura(noRaiz);
 	printf("\no skewheap possui altura %d \n", altura);
+	printf("\n foram realizadas %d comparações para construir a arvore \n", qtdComparacoes);
+	qtdComparacoes = 0;
+	printf("%s\n", "iniciando remocoes");
+	t = clock();
+	desconstruirHeap();
+	t = clock() - t;
+	time_taken = ((double) t) / CLOCKS_PER_SEC; // in seconds
+	printf("foram gastos %f segundos para descontruir arvore \n", time_taken);
+	printf("\n foram realizadas %d comparações para desconstruir a arvore \n", qtdComparacoes);
 
 //	imprimirProfundidade(noRaiz);
 
