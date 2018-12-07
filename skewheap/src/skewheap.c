@@ -4,7 +4,6 @@
  Author      : 
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
  ============================================================================
  */
 
@@ -12,6 +11,7 @@
 #include <stdlib.h>
 #include "skewheap.h"
 #include <string.h>
+#include <time.h>
 
 SkewNode* noRaiz;
 
@@ -181,8 +181,9 @@ void executarAmbienteProducao(int argc, char* argv[]) {
 	printf("%i\n", intMax);
 	int arrayChaves[quantidadeNos];
 	gerarChaves(intMin, intMax, quantidadeNos, arrayChaves);
-	imprimirArray(quantidadeNos, arrayChaves);
-
+//	imprimirArray(quantidadeNos, arrayChaves);
+	clock_t t;
+	t = clock();
 	int chaveNoRaiz = arrayChaves[0];
 	noRaiz = criarNovoNo(chaveNoRaiz, NULL);
 	int chaveAtual;
@@ -191,8 +192,14 @@ void executarAmbienteProducao(int argc, char* argv[]) {
 //		printf("%i \n", chave);
 		adicionarNo(chave);
 	}
+	t = clock() - t;
+	double time_taken = ((double) t) / CLOCKS_PER_SEC; // in seconds
+	printf("foram gastos %f segundos para executar \n", time_taken);
 	printf("%s\n", "imprimir arvore");
-	imprimirProfundidade(noRaiz);
+	int altura = calcularAltura(noRaiz);
+	printf("\no skewheap possui altura %d \n", altura);
+
+//	imprimirProfundidade(noRaiz);
 
 }
 
